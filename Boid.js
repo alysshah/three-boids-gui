@@ -29,11 +29,39 @@ class Boid {
     return this.point;
   }
 
-  update(flock, confinementMode, col, cohMult, sepMult, aliMult) {
+  update(
+    flock,
+    confinementMode,
+    col,
+    cohMult,
+    cohRange,
+    sepMult,
+    sepRange,
+    aliMult,
+    aliRange
+  ) {
     // Apply forces
-    let v1 = this.cohesion(cohMult, 50, flock, this.maxSpeed, this.maxForce);
-    let v2 = this.separation(sepMult, 25, flock, this.maxSpeed, this.maxForce);
-    let v3 = this.alignment(aliMult, 50, flock, this.maxSpeed, this.maxForce);
+    let v1 = this.cohesion(
+      cohMult,
+      cohRange,
+      flock,
+      this.maxSpeed,
+      this.maxForce
+    );
+    let v2 = this.separation(
+      sepMult,
+      sepRange,
+      flock,
+      this.maxSpeed,
+      this.maxForce
+    );
+    let v3 = this.alignment(
+      aliMult,
+      aliRange,
+      flock,
+      this.maxSpeed,
+      this.maxForce
+    );
 
     this.velocity.add(v1);
     this.velocity.add(v2);
